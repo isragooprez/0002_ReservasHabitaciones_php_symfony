@@ -20,72 +20,6 @@ class ReservationControllerTest extends WebTestCase
 
     const RUTA_API1 = 'api/v1/reservas';
 
-    public function testGetRerservation200()
-    {
-        $client = static::createClient();
-
-        $crawler = $client->request('GET', self::RUTA_API1);
-        $respose = $client->getResponse();
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        self::assertTrue($respose->isSuccessful());
-        self::assertJson($respose->getContent());
-
-    }
-
-    public function testGetRerservationByHotel200()
-    {
-        $client = static::createClient();
-
-        $crawler = $client->request('GET', self::RUTA_API0.'/hotel/1');
-        $respose = $client->getResponse();
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        self::assertTrue($respose->isSuccessful());
-        self::assertJson($respose->getContent());
-    }
-
-
-    public function testGetRerservationById200()
-    {
-        $client = static::createClient();
-
-        $crawler = $client->request('GET', self::RUTA_API1);
-        $respose = $client->getResponse();
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        self::assertTrue($respose->isSuccessful());
-        self::assertJson($respose->getContent());
-
-    }
-
-
-    public function testPost()
-    {
-
-        $data = array(
-            'fecha' => '04/27/2999',
-            'entrada' => 16,
-            'salida' => '20',
-            'habitacion' => 1,
-            'usuario' => 1,
-            'maxdisponible' => 22,
-        );
-        $client = static::createClient();
-        $client->request('POST', self::RUTA_API1, $data);
-        $response = $client->getResponse();
-        self::assertTrue($response->isSuccessful());
-        self::assertJson($response->getContent());
-        //Decode Json
-        $json = $response->getContent();
-        $arrReserva = json_decode($json, true);
-        //delete reserva test
-        $client = static::createClient();
-        $client->request('DELETE', 'api/v1/reservas/' . $arrReserva['id']);
-        $response = $client->getResponse();
-        self::assertTrue($response->isSuccessful());
-        self::assertJson($response->getContent());
-    }
-
-
-
     public function testCreateReservas()
     {
         $data = array(
@@ -134,4 +68,70 @@ class ReservationControllerTest extends WebTestCase
         self::assertTrue($response->isSuccessful());
         self::assertJson($response->getContent());
     }
+
+    public function testGetRerservation200()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', self::RUTA_API1);
+        $respose = $client->getResponse();
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        self::assertTrue($respose->isSuccessful());
+        self::assertJson($respose->getContent());
+
+    }
+
+    public function testGetRerservationByHotel200()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', self::RUTA_API1. '/hotel/1');
+        $respose = $client->getResponse();
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        self::assertTrue($respose->isSuccessful());
+        self::assertJson($respose->getContent());
+    }
+
+
+    public function testGetRerservationById200()
+    {
+        $client = static::createClient();
+
+        $crawler = $client->request('GET', self::RUTA_API1);
+        $respose = $client->getResponse();
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        self::assertTrue($respose->isSuccessful());
+        self::assertJson($respose->getContent());
+
+    }
+
+
+    public function testPost()
+    {
+
+        $data = array(
+            'fecha' => '04/27/2999',
+            'entrada' => 16,
+            'salida' => '20',
+            'habitacion' => 1,
+            'usuario' => 1,
+            'maxdisponible' => 22,
+        );
+        $client = static::createClient();
+        $client->request('POST', self::RUTA_API1, $data);
+        $response = $client->getResponse();
+        self::assertTrue($response->isSuccessful());
+        self::assertJson($response->getContent());
+        //Decode Json
+        $json = $response->getContent();
+        $arrReserva = json_decode($json, true);
+        //delete reserva test
+        $client = static::createClient();
+        $client->request('DELETE', 'api/v1/reservas/' . $arrReserva['id']);
+        $response = $client->getResponse();
+        self::assertTrue($response->isSuccessful());
+        self::assertJson($response->getContent());
+    }
+
+
 }
