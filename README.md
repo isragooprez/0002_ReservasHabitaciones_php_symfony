@@ -17,15 +17,15 @@ Una empresa hotelera desea revolucionar el alquiler de habitaciones de hotel med
 
 Para arracancar la aplicacion debes ejecurar losgientes pasos
 
-1 Asgurate que as inicaido mysql o XAMPP
-2 Crea la base de datos o ejecuta los caomandos de doctrinte para crear la base desde las clases entity del proyecto
-  Comprobar si la base de datos esta sincronizada con el mapeo  
-  php bin/console doctrine:schema:validate
-  php bin/console doctrine:schema:update --dump-sql --force
-3 Ejecuta el comando composer update o composer install
-4 Revisa los archivos ebn el proyect /web/js/busqueda.js,  /web/js/reserva.js  su rutas internas esten el puerto correcto.
-5 Ejecuta el comando >php bin/console server:run para arrancar la app
-6 En el navagador puedes probar los siegueinte links que pertenecen a la primer string.
+*  Asgurate que as inicaido mysql o XAMPP
+* Crea la base de datos o ejecuta los caomandos de doctrinte para crear la base desde las clases entity del proyecto
+  * Comprobar si la base de datos esta sincronizada con el mapeo  
+  * php bin/console doctrine:schema:validate
+  * php bin/console doctrine:schema:update --dump-sql --force
+*  Ejecuta el comando composer update o composer install
+*  Revisa los archivos ebn el proyect /web/js/busqueda.js,  /web/js/reserva.js  su rutas internas esten el puerto correcto.
+*  Ejecuta el comando >php bin/console server:run para arrancar la app
+*  En el navagador puedes probar los siegueinte links que pertenecen a la primer string.
     Información del producto entregado:
     •	URL de página inicial de reservación para clientes 
         o	http://localhost:8001/
